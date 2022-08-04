@@ -1,0 +1,251 @@
+->SQl Introduction:
+
+SQL is Structured Query Language, which is a programming language for storing, manipulating and retrieving data stored in a relational database.
+
+SQL is the standard language for Relational Database System.
+ All the Relational Database Management Systems (RDMS) like MySQL, MS Access, Oracle, Sybase, Informix, Postgres and SQL Server use SQL as their standard database language.
+
+->SQL commands:
+
+The standard SQL commands to interact with relational databases are CREATE, SELECT, INSERT, UPDATE, DELETE and DROP. These commands can be classified into the following groups based on their nature,
+1)DDL - Data Definition Language
+
+DDL is short name of Data Definition Language, 
+which deals with database schemas and descriptions, of how the data should reside in the database.
+
+    CREATE - create a new table, view for a table or other object in the database
+    ALTER - modifies an existing database object, such as a table
+    DROP - deletes an entire table, a view of a table or other objects in the database
+    TRUNCATE - remove all records from a table, including all spaces allocated for the records are removed
+    COMMENT - add comments to the data dictionary
+    RENAME - rename an object
+
+ 
+2)DML - Data Manipulation Language
+DML is short name of Data Manipulation Language,
+which deals with data manipulation and includes most common SQL statements such SELECT, INSERT, UPDATE, DELETE etc, and it is used to store, modify, retrieve, delete and update data in a database.
+
+    SELECT - retrieves records from one or more tables
+    INSERT - creates a record
+    UPDATE - modifies records
+    DELETE - deletes records
+    MERGE - UPSERT operation (insert or update)
+    CALL - call a PL/SQL or Java subprogram
+    EXPLAIN PLAN - interpretation of the data access path
+    LOCK TABLE - concurrency control
+
+ 
+3)DCL - Data Control Language
+DCL is short name of Data Control Language,
+which includes commands such as GRANT and mostly concerned with rights, permissions and other controls of the database system.
+
+    GRANT (Grant privilige(s) to user)
+    REVOKE (Remove granted privilige(s) from a user)
+
+ 
+4)TCL - Transaction Control Language
+TCL is short name of Transaction Control Language which deals with a transaction within a database.
+    
+	COMMIT - commits a transaction
+    ROLLBACK - rollback a transaction in case of any error occurs
+    SAVEPOINT - to rollback the transaction making points within groups
+    SET TRANSACTION - specify characteristics of the transaction
+
+*********************************************************************************************************************
+
+->Table
+
+Table is a collection of data, organized in terms of rows and columns. In DBMS term, table is known as relation and row as tuple.
+
+1)Create Table Syntax
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+
+CREATE TABLE AS Statement
+
+The CREATE TABLE AS statement is used to create a table from an existing table by copying the columns of existing table.
+syntax:
+CREATE TABLE new_table  
+  AS (SELECT column_1, column2, ... column_n  
+      FROM old_table);  
+
+a)ALTER TABLE Statement
+In Oracle, ALTER TABLE statement specifies how to add, modify, drop or delete columns in a table. 
+It is also used to rename a table.
+
+b)How to add column in a table?
+ALTER TABLE table_name  
+  ADD column_name column-definition;
+
+c)How to modify column of a table?
+ALTER TABLE table_name  
+  MODIFY column_name column_type;
+
+d)How to drop column of a table?
+ALTER TABLE table_name  
+  DROP COLUMN column_name;  
+
+e)How to rename column of a table?
+ALTER TABLE table_name  
+ RENAME COLUMN old_name to new_name;  
+
+f)How to rename table?
+ALTER TABLE table_name  
+  RENAME TO new_table_name; 
+
+g)Drop table?
+Oracle DROP TABLE statement is used to remove or delete a table from the Oracle database.
+
+Syntax
+DROP [schema_name].TABLE table_name  
+[ CASCADE CONSTRAINTS ]  
+[ PURGE ];
+
+
+2)Data Types
+
+SQL Data Types
+Data types are used to represent the nature of the data that can be stored in the database table. For example, in a particular column of a table, if we want to store a string type of data then we will have to declare a string data type of this column.
+Data types mainly classified into three categories for every database.
+o	String Data types
+o	Numeric Data types
+o	Date and time Data types
+
+Insert Data in Table:
+SQL INSERT statement is a SQL query. It is used to insert a single or a multiple records in a table.
+There are two ways to insert data in a table:
+
+Syntax
+
+In the first method there is no need to specify the column name where the data will be inserted, you need only their values.
+INSERT INTO table_name  VALUES (value1, value2, value3....);  
+
+The second method specifies both the column name and values which you want to insert.
+INSERT INTO table_name (column1, column2, column3....)  VALUES (value1, value2, value3.....);  
+
+Update Statement
+
+Syntax
+UPDATE table_name
+SET column1 = value1, column2 = value2, ... 
+WHERE condition;
+
+
+Delete table
+
+In Oracle, DELETE statement is used to remove or delete a single record or multiple records from a table.
+
+Syntax 
+DELETE FROM table_name  
+WHERE conditions;  
+
+Order By
+
+ORDER BY clause to sort the result set by one or more columns in ascending or descending order.
+Syntax
+SELECT
+    column_1,
+    column_2,
+    column_3,
+    ...
+FROM
+    table_name
+ORDER BY
+    column_1 [ASC | DESC] [NULLS FIRST | NULLS LAST],
+    column_1 [ASC | DESC] [NULLS FIRST | NULLS LAST],
+    ...
+
+Eg:
+select * from emp order by Gender desc;
+
+Group By
+
+In Oracle GROUP BY clause is used with SELECT statement to collect data from multiple records and group the results by one or more columns.
+
+Syntax
+SELECT expression1, expression2, ... expression_n,   
+aggregate_function (aggregate_expression)  
+FROM tables  
+WHERE conditions  
+GROUP BY expression1, expression2, ... expression_n;
+
+Oracle SELECT DISTINCT
+SELECT DISTINCT statement to query distinct data from tables.
+
+Syntax
+SELECT DISTINCT column_1
+FROM table;
+
+AND Operator
+
+AND operator to combine two or more Boolean expressions.
+
+The AND operator is a logical operator that combines Boolean expressions and returns true if both expressions are true. If one of the expressions is false, the AND operator returns false.
+
+Syntax
+expression_1 AND expression_2
+
+Oracle OR operator
+
+The OR operator is a logical operator that combines Boolean expressions and returns true if one of the expressions is true.
+
+The following illustrates the syntax of the OR operator:
+
+expression_1 AND expression_2
+Code language: SQL (Structured Query Language) (sql)
+The following table shows the results the OR operator between true, false, and a NULL value.
+
+	TRUE	FALSE	NULL
+TRUE	TRUE	TRUE	TRUE
+FALSE	TRUE	FALSE	NULL
+NULL	TRUE	NULL	NULL
+
+
+Oracle FETCH clause
+
+Oracle FETCH clause to limit the rows returned by a query.
+Syntax
+
+[ OFFSET offset ROWS]
+ FETCH  NEXT [  row_count | percent PERCENT  ] ROWS  [ ONLY | WITH TIES ]
+
+Oracle BETWEEN
+
+The BETWEEN operator allows you to specify a range to test. When you use the BETWEEN operator to form a search condition for rows returned by a SELECT statement, only rows whose values are in the specified range are returned.
+
+Syntax
+expression [ NOT ] BETWEEN low AND high
+
+EG :
+select * from emp where year between 1988 and 2002 order by year asc;
+
+Oracle IN Operator
+
+IN operator to determine whether a value matches any value in a list or a subquery.
+Syntax 
+expression [NOT] IN (v1,v2,...)
+
+SQL Aggregate Functions
+
+An aggregate function performs a calculation on a set of values, and returns a single value. Except for COUNT(*), aggregate functions ignore null values. Aggregate functions are often used with the GROUP BY clause of the SELECT statement.
+
+COUNT() Syntax
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+
+AVG() Syntax
+
+SELECT AVG(column_name)
+FROM table_name
+WHERE condition;
+
+SUM() Syntax
+
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
